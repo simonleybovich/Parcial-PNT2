@@ -22,65 +22,60 @@ export default {
   data() {
     return {
       texto: "",
-    }
+    };
   },
   methods: {
     mayusMinus(texto) {
-      let text = ""
-      let esMayuscula = true
+      let text = "";
       for (let i = 0; i < texto.length; i++) {
-        let caracterActual = texto.charAt(i)
-        if (esMayuscula) {
-          caracterActual = caracterActual.toUpperCase()
+        if (i % 2 === 0) {
+          text += texto[i].toUpperCase();
         } else {
-          caracterActual = caracterActual.toLowerCase()
+          text += texto[i].toLowerCase();
         }
-        text += caracterActual
-        esMayuscula = !esMayuscula
       }
-      return text
+      return text;
     },
     minusMayus(texto) {
-      let text = ''
-    for (let i = 0; i < texto.length; i++) {
+      let text = "";
+      for (let i = 0; i < texto.length; i++) {
         if (i % 2 === 0) {
-            text += texto[i].toLowerCase()
+          text += texto[i].toLowerCase();
         } else {
-            text += texto[i].toUpperCase()
+          text += texto[i].toUpperCase();
         }
-    }
-    return text
-
+      }
+      return text;
     },
   },
   computed: {
     codificado() {
-      const texto = this.texto.toLocaleLowerCase()
+      const texto = this.texto.toLocaleLowerCase();
       return texto.replace(/[aeiouAEIOU]/g, function (char) {
         switch (char) {
           case "a":
-            return "u"
+            return "u";
           case "e":
-            return "o"
+            return "o";
           case "o":
-            return "e"
+            return "e";
           case "u":
-            return "a"
+            return "a";
           default:
-            return char
+            return char;
         }
-      })
+      });
     },
     minuscula() {
-      return this.texto.toLowerCase()
+      return this.texto.toLowerCase();
     },
     mayuscula() {
-      return this.texto.toUpperCase()
+      return this.texto.toUpperCase();
     },
     contador() {
-      return this.texto.length
+      return this.texto.length;
     },
   },
-}
+};
 </script>
 <style scoped lang="css"></style>
